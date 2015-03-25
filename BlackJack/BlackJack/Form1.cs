@@ -34,7 +34,6 @@ namespace BlackJack
             int valeur = 1;
             for (int i = 0; i < 52; ++i)
             {
-               paquet.Add(new Carte(file[i]));
                if (valeur <= 9 && (i % 4) == 0)
                {
                   valeur++;
@@ -43,10 +42,10 @@ namespace BlackJack
                {
                   valeur++;
                }
-               paquet[i].SetValeur(valeur);
+               paquet.Add(new Carte(file[i], valeur));
             }
             ////////////////////////////////////////
-            string ccc = "ccc: ";
+            string ccc = "";
             for (int i = 0; i < 52; i++)
             {
                ccc += paquet[i].GetPath() + " #" + paquet[i].GetValeur().ToString() + "\n";
@@ -104,6 +103,14 @@ namespace BlackJack
          else
          {
             PN_AI_2.Enabled = false;
+         }
+      }
+
+      private void BTN_Jouer_Click(object sender, EventArgs e)
+      {
+         if (RB_CPU1.Checked)
+         {
+
          }
       }
    }

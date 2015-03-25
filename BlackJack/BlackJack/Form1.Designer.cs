@@ -58,6 +58,7 @@
          this.BTN_Jouer.TabIndex = 0;
          this.BTN_Jouer.Text = "Jouer";
          this.BTN_Jouer.UseVisualStyleBackColor = true;
+         this.BTN_Jouer.Click += new System.EventHandler(this.BTN_Jouer_Click);
          // 
          // groupBox1
          // 
