@@ -44,6 +44,7 @@
          this.RB_AI_Courageux2 = new System.Windows.Forms.RadioButton();
          this.RB_CPU2 = new System.Windows.Forms.RadioButton();
          this.RB_Humain2 = new System.Windows.Forms.RadioButton();
+         this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
          this.groupBox1.SuspendLayout();
          this.PN_AI_1.SuspendLayout();
          this.groupBox2.SuspendLayout();
@@ -231,7 +232,6 @@
          this.MaximizeBox = false;
          this.Name = "Form1";
          this.Text = "BlackJack !";
-         this.Load += new System.EventHandler(this.Form1_Load);
          this.groupBox1.ResumeLayout(false);
          this.groupBox1.PerformLayout();
          this.PN_AI_1.ResumeLayout(false);
@@ -261,6 +261,7 @@
       private System.Windows.Forms.RadioButton RB_AI_Courageux2;
       private System.Windows.Forms.RadioButton RB_CPU2;
       private System.Windows.Forms.RadioButton RB_Humain2;
+      private System.ComponentModel.BackgroundWorker backgroundWorker1;
    }
 }
 

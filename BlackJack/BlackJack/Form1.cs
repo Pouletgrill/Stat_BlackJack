@@ -13,73 +13,10 @@ namespace BlackJack
 {
    public partial class Form1 : Form
    {
-      List<Carte> paquet = new List<Carte>();
+      
       public Form1()
       {
          InitializeComponent();
-      }
-
-      private void Form1_Load(object sender, EventArgs e)
-      {
-         LoadImage();
-         MixCards();
-      }
-
-      private void LoadImage()
-      {
-         try
-         {
-            //Création des objet cartes dans paquet
-            String[] file = Directory.GetFiles(@"Image_Carte", "*.PNG");
-            int valeur = 1;
-            for (int i = 0; i < 52; ++i)
-            {
-               if (valeur <= 9 && (i % 4) == 0)
-               {
-                  valeur++;
-               }
-               else if (valeur == 10 && (i % 16) == 0)
-               {
-                  valeur++;
-               }
-               paquet.Add(new Carte(file[i], valeur));
-            }
-            ////////////////////////////////////////
-            string ccc = "";
-            for (int i = 0; i < 52; i++)
-            {
-               ccc += paquet[i].GetPath() + " #" + paquet[i].GetValeur().ToString() + "\n";
-            }
-            MessageBox.Show(ccc);
-         }
-         catch (Exception es)
-         {
-            if (es.HResult == -2147024893)// si le document image est présent ou pas
-            {
-               MessageBox.Show("Erreur:\nLe document d'image \"Image_Carte\" n'est plus dans repertoire courent ou a été modifier.");
-            }
-            else
-            {
-               MessageBox.Show(es.Message);
-            }
-            this.Close();
-         }
-      }
-
-      private void MixCards()
-      {
-         List<Carte> Temp = new List<Carte>(paquet);
-         Random rnd = new Random();
-         int NbTemp;
-         paquet.Clear();
-         for (int i = 0; i < 52; i++)
-         {
-            do
-            {
-               NbTemp = rnd.Next(0, 52);
-            } while (paquet.Contains(Temp[NbTemp]));
-            paquet.Add(Temp[NbTemp]);
-         }
       }
 
       private void RB_Humain1_and_RB_CPU1_CheckedChanged(object sender, EventArgs e)
@@ -108,10 +45,52 @@ namespace BlackJack
 
       private void BTN_Jouer_Click(object sender, EventArgs e)
       {
+         int DifficulterAi1 = 3;
+         int DifficulterAi2 = 3;
+
          if (RB_CPU1.Checked)
          {
-
+            if (RB_AI_Prudent1.Checked)
+               DifficulterAi1 = 3;
+            else if (RB_AI_Moyen1.Checked)
+               DifficulterAi1 = 2;
+            else if (RB_AI_Courageux1.Checked)
+               DifficulterAi1 = 1;
          }
+
+
+         if (RB_CPU2.Checked)
+         {
+            if (RB_AI_Prudent2.Checked)
+               DifficulterAi2 = 3;
+            else if (RB_AI_Moyen2.Checked)
+               DifficulterAi2 = 2;
+            else if (RB_AI_Courageux2.Checked)
+               DifficulterAi2 = 1;
+         }
+   
+
+         if (RB_CPU1.Checked && !RB_CPU2.Checked)
+         {
+            Jeu Principal = new Jeu(DifficulterAi1);
+            Principal.ShowDialog();            
+         }
+         else if (!RB_CPU1.Checked && RB_CPU2.Checked)
+         {
+            Jeu Principal = new Jeu(DifficulterAi2);
+            Principal.ShowDialog();
+         }
+         else if(RB_CPU1.Checked && RB_CPU2.Checked)
+         {
+            Jeu Principal = new Jeu(DifficulterAi1, DifficulterAi2);
+            Principal.ShowDialog();
+         }
+         else 
+         {
+            Jeu Principal = new Jeu();
+            Principal.ShowDialog();
+         }
+
       }
    }
 }
