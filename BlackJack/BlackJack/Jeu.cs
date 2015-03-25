@@ -14,27 +14,39 @@ namespace BlackJack
    public partial class Jeu : Form
    {
       List<Carte> paquet = new List<Carte>();
-      Point CarteJ1 = new Point(200, 800);
-      Point CarteJ2 = new Point(600, 800);
-
+      Point CarteJ1 = new Point(12, 100);
+      Point CarteJ2 = new Point(500, 100);
+      Joueur J1 ;
+      Joueur J2;
+      int CompteurCarte = 0;
 
       public Jeu()
       {
          InitializeComponent();
+         J1 = new Joueur("J1");
+         J2 = new Joueur("J2");
       }
       public Jeu(int CPU_Level)
       {
          InitializeComponent();
+         J1 = new Joueur(CPU_Level,"J1");
+         J2 = new Joueur("J2");
       }
       public Jeu(int CPU_Level1, int CPU_Level2)
       {
          InitializeComponent();
+         J1 = new Joueur(CPU_Level1,"J1");
+         J2 = new Joueur(CPU_Level2,"J2");
 
       }
       private void Jeu_Load(object sender, EventArgs e)
       {
          LoadImage();
          MixCards();
+         BTN_Continuer_J1.Enabled = false;
+         BTN_Arreter_J1.Enabled = false;
+         BTN_Continuer_J2.Enabled = false;
+         BTN_Arreter_J2.Enabled = false;
       }
 
       private void LoadImage()
@@ -55,14 +67,7 @@ namespace BlackJack
                   valeur++;
                }
                paquet.Add(new Carte(file[i], valeur));
-            }
-            ////////////////////////////////////////
-            string ccc = "";
-            for (int i = 0; i < 52; i++)
-            {
-               ccc += paquet[i].GetPath() + " #" + paquet[i].GetValeur().ToString() + "\n";
-            }
-            MessageBox.Show(ccc);
+            }       
          }
          catch (Exception es)
          {
@@ -95,25 +100,59 @@ namespace BlackJack
       }
 
       private void AfficherCarte(int posPaquet,Joueur joueur)
-      {            
-
+      {     
             PictureBox PBox = new PictureBox();
             PBox.BackgroundImage = paquet[posPaquet].GetImage();
-            PBox.Height = PBox.Width = 47;
+            PBox.Height = 90; 
+            PBox.Width = 52;
             
-
-            if(joueur.GetNom() == "J1")
+            PBox.BackgroundImageLayout = ImageLayout.Stretch;
+            if (joueur.GetNom() == "J1")
+            {
                PBox.Location = CarteJ1;
+               CarteJ1.X += 20;
+            }               
+            else
+            {
+               PBox.Location = CarteJ2;
+               CarteJ2.X += 20;
+            }
 
-            paquet[posPaquet].GetValeur();
+            if (joueur.GetTotal() + 11 > 21 && paquet[posPaquet].GetValeur()== 11)
+            {
+               paquet[posPaquet].SetValeur(1);
+            }
+            
+            joueur.SetTotal(joueur.GetTotal() + paquet[posPaquet].GetValeur());
             this.Controls.Add(PBox);
+           
       }
 
       private void BTN_Commencer_Click(object sender, EventArgs e)
       {
-       
-            
-               
+         while(CompteurCarte<4)
+         {
+            if (i % 2 == 0)
+               AfficherCarte(i, J1);
+            else
+               AfficherCarte(i, J2);
+            CompteurCarte++;
+         }
+
+         LB_Total_J1.Text = J1.GetTotal().ToString();
+         LB_Total_J2.Text = J2.GetTotal().ToString();
+
+         BTN_Continuer_J1.Enabled = true;
+         BTN_Arreter_J1.Enabled = true;
+
+         BTN_Commencer.Enabled = false;
+         BTN_Commencer.Visible = false;
+      }
+
+
+      private void BTN_Continuer_J1_Click(object sender, EventArgs e)
+      {
+         AfficherCarte()
       }
    }
 }

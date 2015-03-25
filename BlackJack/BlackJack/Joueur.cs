@@ -39,6 +39,10 @@ namespace BlackJack
       {
          return Cpu_Level_;
       }
+      public void SetTotal(int Total)
+      {
+         TotalPoint = Total;
+      }
 
 
    }
