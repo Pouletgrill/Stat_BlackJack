@@ -45,6 +45,8 @@
          this.RB_CPU2 = new System.Windows.Forms.RadioButton();
          this.RB_Humain2 = new System.Windows.Forms.RadioButton();
          this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+         this.CB_Compter1 = new System.Windows.Forms.CheckBox();
+         this.CB_Compter2 = new System.Windows.Forms.CheckBox();
          this.groupBox1.SuspendLayout();
          this.PN_AI_1.SuspendLayout();
          this.groupBox2.SuspendLayout();
@@ -53,7 +55,7 @@
          // 
          // BTN_Jouer
          // 
-         this.BTN_Jouer.Location = new System.Drawing.Point(12, 214);
+         this.BTN_Jouer.Location = new System.Drawing.Point(12, 258);
          this.BTN_Jouer.Name = "BTN_Jouer";
          this.BTN_Jouer.Size = new System.Drawing.Size(211, 39);
          this.BTN_Jouer.TabIndex = 0;
@@ -68,20 +70,21 @@
          this.groupBox1.Controls.Add(this.RB_Humain1);
          this.groupBox1.Location = new System.Drawing.Point(12, 12);
          this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(211, 95);
+         this.groupBox1.Size = new System.Drawing.Size(211, 117);
          this.groupBox1.TabIndex = 3;
          this.groupBox1.TabStop = false;
          this.groupBox1.Text = "Joueur 1";
          // 
          // PN_AI_1
          // 
+         this.PN_AI_1.Controls.Add(this.CB_Compter1);
          this.PN_AI_1.Controls.Add(this.RB_AI_Prudent1);
          this.PN_AI_1.Controls.Add(this.RB_AI_Moyen1);
          this.PN_AI_1.Controls.Add(this.RB_AI_Courageux1);
          this.PN_AI_1.Enabled = false;
          this.PN_AI_1.Location = new System.Drawing.Point(88, 10);
          this.PN_AI_1.Name = "PN_AI_1";
-         this.PN_AI_1.Size = new System.Drawing.Size(117, 81);
+         this.PN_AI_1.Size = new System.Drawing.Size(117, 101);
          this.PN_AI_1.TabIndex = 2;
          // 
          // RB_AI_Prudent1
@@ -145,22 +148,23 @@
          this.groupBox2.Controls.Add(this.PN_AI_2);
          this.groupBox2.Controls.Add(this.RB_CPU2);
          this.groupBox2.Controls.Add(this.RB_Humain2);
-         this.groupBox2.Location = new System.Drawing.Point(12, 113);
+         this.groupBox2.Location = new System.Drawing.Point(12, 135);
          this.groupBox2.Name = "groupBox2";
-         this.groupBox2.Size = new System.Drawing.Size(211, 95);
+         this.groupBox2.Size = new System.Drawing.Size(211, 117);
          this.groupBox2.TabIndex = 4;
          this.groupBox2.TabStop = false;
          this.groupBox2.Text = "Joueur 2";
          // 
          // PN_AI_2
          // 
+         this.PN_AI_2.Controls.Add(this.CB_Compter2);
          this.PN_AI_2.Controls.Add(this.RB_AI_Prudent2);
          this.PN_AI_2.Controls.Add(this.RB_AI_Moyen2);
          this.PN_AI_2.Controls.Add(this.RB_AI_Courageux2);
          this.PN_AI_2.Enabled = false;
          this.PN_AI_2.Location = new System.Drawing.Point(88, 10);
          this.PN_AI_2.Name = "PN_AI_2";
-         this.PN_AI_2.Size = new System.Drawing.Size(117, 81);
+         this.PN_AI_2.Size = new System.Drawing.Size(117, 101);
          this.PN_AI_2.TabIndex = 2;
          // 
          // RB_AI_Prudent2
@@ -219,11 +223,31 @@
          this.RB_Humain2.UseVisualStyleBackColor = true;
          this.RB_Humain2.CheckedChanged += new System.EventHandler(this.RB_Humain2_and_RB_CPU2_CheckedChanged);
          // 
+         // CB_Compter1
+         // 
+         this.CB_Compter1.AutoSize = true;
+         this.CB_Compter1.Location = new System.Drawing.Point(5, 79);
+         this.CB_Compter1.Name = "CB_Compter1";
+         this.CB_Compter1.Size = new System.Drawing.Size(97, 17);
+         this.CB_Compter1.TabIndex = 6;
+         this.CB_Compter1.Text = "Compter cartes";
+         this.CB_Compter1.UseVisualStyleBackColor = true;
+         // 
+         // CB_Compter2
+         // 
+         this.CB_Compter2.AutoSize = true;
+         this.CB_Compter2.Location = new System.Drawing.Point(5, 79);
+         this.CB_Compter2.Name = "CB_Compter2";
+         this.CB_Compter2.Size = new System.Drawing.Size(97, 17);
+         this.CB_Compter2.TabIndex = 7;
+         this.CB_Compter2.Text = "Compter cartes";
+         this.CB_Compter2.UseVisualStyleBackColor = true;
+         // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(235, 263);
+         this.ClientSize = new System.Drawing.Size(235, 305);
          this.Controls.Add(this.groupBox2);
          this.Controls.Add(this.groupBox1);
          this.Controls.Add(this.BTN_Jouer);
@@ -262,6 +286,8 @@
       private System.Windows.Forms.RadioButton RB_CPU2;
       private System.Windows.Forms.RadioButton RB_Humain2;
       private System.ComponentModel.BackgroundWorker backgroundWorker1;
+      private System.Windows.Forms.CheckBox CB_Compter1;
+      private System.Windows.Forms.CheckBox CB_Compter2;
    }
 }
 

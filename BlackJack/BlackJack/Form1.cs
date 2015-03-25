@@ -72,17 +72,17 @@ namespace BlackJack
 
          if (RB_CPU1.Checked && !RB_CPU2.Checked)
          {
-            Jeu Principal = new Jeu(DifficulterAi1);
+            Jeu Principal = new Jeu(DifficulterAi1, CB_Compter1.Checked);
             Principal.ShowDialog();            
          }
          else if (!RB_CPU1.Checked && RB_CPU2.Checked)
          {
-            Jeu Principal = new Jeu(DifficulterAi2);
+            Jeu Principal = new Jeu(DifficulterAi2, CB_Compter2.Checked);
             Principal.ShowDialog();
          }
          else if(RB_CPU1.Checked && RB_CPU2.Checked)
          {
-            Jeu Principal = new Jeu(DifficulterAi1, DifficulterAi2);
+            Jeu Principal = new Jeu(DifficulterAi1, CB_Compter1.Checked, DifficulterAi2, CB_Compter2.Checked);
             Principal.ShowDialog();
          }
          else 
