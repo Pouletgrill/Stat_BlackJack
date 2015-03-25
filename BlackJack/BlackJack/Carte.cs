@@ -9,12 +9,29 @@ namespace BlackJack
 {
     class Carte
     {
-        Image cartePNG = null;
+        Image cartePNG_ = null;
+        String path_ = null;
+        int valeur_;
 
-        private Image GetImage()
+        public Carte(String Path)
         {
-            return cartePNG;
+            cartePNG_ = Image.FromFile(Path);
+            path_ = Path;
         }
 
+        public Image GetImage()
+        {
+            return cartePNG_;
+        }
+
+        public String GetPath()
+        {
+            return path_;
+        }
+
+        public int GetValeur()
+        {
+            return valeur_;
+        }
     }
 }
