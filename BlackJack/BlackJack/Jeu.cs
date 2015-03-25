@@ -125,6 +125,8 @@ namespace BlackJack
             
             joueur.SetTotal(joueur.GetTotal() + paquet[posPaquet].GetValeur());
             this.Controls.Add(PBox);
+            LB_Total_J1.Text = J1.GetTotal().ToString();
+            LB_Total_J2.Text = J2.GetTotal().ToString();
            
       }
 
@@ -132,15 +134,12 @@ namespace BlackJack
       {
          while(CompteurCarte<4)
          {
-            if (i % 2 == 0)
-               AfficherCarte(i, J1);
+            if (CompteurCarte % 2 == 0)
+               AfficherCarte(CompteurCarte, J1);
             else
-               AfficherCarte(i, J2);
+               AfficherCarte(CompteurCarte, J2);
             CompteurCarte++;
-         }
-
-         LB_Total_J1.Text = J1.GetTotal().ToString();
-         LB_Total_J2.Text = J2.GetTotal().ToString();
+         }      
 
          BTN_Continuer_J1.Enabled = true;
          BTN_Arreter_J1.Enabled = true;
@@ -152,7 +151,25 @@ namespace BlackJack
 
       private void BTN_Continuer_J1_Click(object sender, EventArgs e)
       {
-         AfficherCarte()
+         AfficherCarte(CompteurCarte, J1);
+         CompteurCarte++;
+
+         BTN_Continuer_J1.Enabled = false;
+         BTN_Arreter_J1.Enabled = false;
+         BTN_Continuer_J2.Enabled = true;
+         BTN_Arreter_J2.Enabled = true;
+
+      }
+
+      private void BTN_Continuer_J2_Click(object sender, EventArgs e)
+      {
+         AfficherCarte(CompteurCarte, J2);
+         CompteurCarte++;
+
+         BTN_Continuer_J1.Enabled = true;
+         BTN_Arreter_J1.Enabled = true;
+         BTN_Continuer_J2.Enabled = false;
+         BTN_Arreter_J2.Enabled = false;
       }
    }
 }

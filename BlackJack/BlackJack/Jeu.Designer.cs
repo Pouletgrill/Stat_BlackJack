@@ -42,7 +42,7 @@
          // 
          // BTN_Continuer_J1
          // 
-         this.BTN_Continuer_J1.Location = new System.Drawing.Point(50, 252);
+         this.BTN_Continuer_J1.Location = new System.Drawing.Point(15, 252);
          this.BTN_Continuer_J1.Name = "BTN_Continuer_J1";
          this.BTN_Continuer_J1.Size = new System.Drawing.Size(103, 31);
          this.BTN_Continuer_J1.TabIndex = 0;
@@ -52,7 +52,7 @@
          // 
          // BTN_Arreter_J1
          // 
-         this.BTN_Arreter_J1.Location = new System.Drawing.Point(159, 252);
+         this.BTN_Arreter_J1.Location = new System.Drawing.Point(124, 252);
          this.BTN_Arreter_J1.Name = "BTN_Arreter_J1";
          this.BTN_Arreter_J1.Size = new System.Drawing.Size(107, 31);
          this.BTN_Arreter_J1.TabIndex = 1;
@@ -61,16 +61,17 @@
          // 
          // BTN_Continuer_J2
          // 
-         this.BTN_Continuer_J2.Location = new System.Drawing.Point(464, 252);
+         this.BTN_Continuer_J2.Location = new System.Drawing.Point(524, 252);
          this.BTN_Continuer_J2.Name = "BTN_Continuer_J2";
          this.BTN_Continuer_J2.Size = new System.Drawing.Size(99, 32);
          this.BTN_Continuer_J2.TabIndex = 2;
          this.BTN_Continuer_J2.Text = "Continuer";
          this.BTN_Continuer_J2.UseVisualStyleBackColor = true;
+         this.BTN_Continuer_J2.Click += new System.EventHandler(this.BTN_Continuer_J2_Click);
          // 
          // BTN_Arreter_J2
          // 
-         this.BTN_Arreter_J2.Location = new System.Drawing.Point(569, 252);
+         this.BTN_Arreter_J2.Location = new System.Drawing.Point(629, 252);
          this.BTN_Arreter_J2.Name = "BTN_Arreter_J2";
          this.BTN_Arreter_J2.Size = new System.Drawing.Size(104, 32);
          this.BTN_Arreter_J2.TabIndex = 3;
@@ -79,7 +80,7 @@
          // 
          // BTN_Commencer
          // 
-         this.BTN_Commencer.Location = new System.Drawing.Point(302, 30);
+         this.BTN_Commencer.Location = new System.Drawing.Point(298, 12);
          this.BTN_Commencer.Name = "BTN_Commencer";
          this.BTN_Commencer.Size = new System.Drawing.Size(164, 70);
          this.BTN_Commencer.TabIndex = 4;
@@ -90,7 +91,7 @@
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(12, 30);
+         this.label1.Location = new System.Drawing.Point(13, 13);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(81, 13);
          this.label1.TabIndex = 5;
@@ -99,7 +100,7 @@
          // label2
          // 
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(592, 30);
+         this.label2.Location = new System.Drawing.Point(627, 13);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(81, 13);
          this.label2.TabIndex = 6;
@@ -108,7 +109,7 @@
          // LB_Total_J1
          // 
          this.LB_Total_J1.AutoSize = true;
-         this.LB_Total_J1.Location = new System.Drawing.Point(100, 29);
+         this.LB_Total_J1.Location = new System.Drawing.Point(101, 12);
          this.LB_Total_J1.Name = "LB_Total_J1";
          this.LB_Total_J1.Size = new System.Drawing.Size(13, 13);
          this.LB_Total_J1.TabIndex = 7;
@@ -117,7 +118,7 @@
          // LB_Total_J2
          // 
          this.LB_Total_J2.AutoSize = true;
-         this.LB_Total_J2.Location = new System.Drawing.Point(679, 29);
+         this.LB_Total_J2.Location = new System.Drawing.Point(714, 12);
          this.LB_Total_J2.Name = "LB_Total_J2";
          this.LB_Total_J2.Size = new System.Drawing.Size(13, 13);
          this.LB_Total_J2.TabIndex = 8;
