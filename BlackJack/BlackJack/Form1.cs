@@ -22,7 +22,7 @@ namespace BlackJack
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadImage();
-            MixCards(paquet);
+            MixCards();
         }
 
         private void LoadImage()
@@ -34,11 +34,18 @@ namespace BlackJack
                 {
                     paquet.Add(new Carte(array[i]));
                 }
-                MessageBox.Show(paquet.Count().ToString());
             }
             catch (Exception es)
             {
-                MessageBox.Show(es.Message.ToString());
+               if (es.HResult == -2147024893)
+               {
+                  MessageBox.Show("Erreur:\nLe document d'image \"Image_Carte\" n'est plus dans repertoire courent ou a été modifier.");
+               }
+               else
+               {
+                  MessageBox.Show(es.Message);
+               }
+                this.Close();
             }
         }
 
@@ -56,6 +63,30 @@ namespace BlackJack
                 } while (paquet.Contains(Temp[NbTemp]));
                 paquet.Add(Temp[NbTemp]);
             }
+        }
+
+        private void RB_Humain1_and_RB_CPU1_CheckedChanged(object sender, EventArgs e)
+        {
+           if (RB_CPU1.Checked)
+           {
+              PN_AI_1.Enabled = true;
+           }
+           else
+           {
+              PN_AI_1.Enabled = false;
+           }
+        }
+
+        private void RB_Humain2_and_RB_CPU2_CheckedChanged(object sender, EventArgs e)
+        {
+           if (RB_CPU2.Checked)
+           {
+              PN_AI_2.Enabled = true;
+           }
+           else
+           {
+              PN_AI_2.Enabled = false;
+           }
         }
     }
 }
