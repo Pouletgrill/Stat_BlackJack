@@ -39,6 +39,8 @@
             this.LB_Total_J1 = new System.Windows.Forms.Label();
             this.LB_Total_J2 = new System.Windows.Forms.Label();
             this.BTN_Quit = new System.Windows.Forms.Button();
+            this.LB_J1_Depasse = new System.Windows.Forms.Label();
+            this.LB_J2_Depasse = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BTN_Continuer_J1
@@ -63,9 +65,9 @@
             // 
             // BTN_Continuer_J2
             // 
-            this.BTN_Continuer_J2.Location = new System.Drawing.Point(524, 252);
+            this.BTN_Continuer_J2.Location = new System.Drawing.Point(523, 252);
             this.BTN_Continuer_J2.Name = "BTN_Continuer_J2";
-            this.BTN_Continuer_J2.Size = new System.Drawing.Size(99, 32);
+            this.BTN_Continuer_J2.Size = new System.Drawing.Size(103, 31);
             this.BTN_Continuer_J2.TabIndex = 2;
             this.BTN_Continuer_J2.Text = "Continuer";
             this.BTN_Continuer_J2.UseVisualStyleBackColor = true;
@@ -73,9 +75,9 @@
             // 
             // BTN_Arreter_J2
             // 
-            this.BTN_Arreter_J2.Location = new System.Drawing.Point(629, 252);
+            this.BTN_Arreter_J2.Location = new System.Drawing.Point(632, 252);
             this.BTN_Arreter_J2.Name = "BTN_Arreter_J2";
-            this.BTN_Arreter_J2.Size = new System.Drawing.Size(104, 32);
+            this.BTN_Arreter_J2.Size = new System.Drawing.Size(107, 31);
             this.BTN_Arreter_J2.TabIndex = 3;
             this.BTN_Arreter_J2.Text = "Arrêter";
             this.BTN_Arreter_J2.UseVisualStyleBackColor = true;
@@ -137,6 +139,30 @@
             this.BTN_Quit.UseVisualStyleBackColor = true;
             this.BTN_Quit.Click += new System.EventHandler(this.BTN_Quit_Click);
             // 
+            // LB_J1_Depasse
+            // 
+            this.LB_J1_Depasse.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.LB_J1_Depasse.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_J1_Depasse.Location = new System.Drawing.Point(15, 133);
+            this.LB_J1_Depasse.Name = "LB_J1_Depasse";
+            this.LB_J1_Depasse.Size = new System.Drawing.Size(216, 44);
+            this.LB_J1_Depasse.TabIndex = 11;
+            this.LB_J1_Depasse.Text = "Dépassé !";
+            this.LB_J1_Depasse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LB_J1_Depasse.Visible = false;
+            // 
+            // LB_J2_Depasse
+            // 
+            this.LB_J2_Depasse.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.LB_J2_Depasse.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LB_J2_Depasse.Location = new System.Drawing.Point(523, 133);
+            this.LB_J2_Depasse.Name = "LB_J2_Depasse";
+            this.LB_J2_Depasse.Size = new System.Drawing.Size(216, 44);
+            this.LB_J2_Depasse.TabIndex = 12;
+            this.LB_J2_Depasse.Text = "Dépassé !";
+            this.LB_J2_Depasse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LB_J2_Depasse.Visible = false;
+            // 
             // Jeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,6 +170,8 @@
             this.BackgroundImage = global::BlackJack.Properties.Resources.images;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(751, 289);
+            this.Controls.Add(this.LB_J2_Depasse);
+            this.Controls.Add(this.LB_J1_Depasse);
             this.Controls.Add(this.BTN_Quit);
             this.Controls.Add(this.LB_Total_J2);
             this.Controls.Add(this.LB_Total_J1);
@@ -177,5 +205,7 @@
       private System.Windows.Forms.Label LB_Total_J1;
       private System.Windows.Forms.Label LB_Total_J2;
       private System.Windows.Forms.Button BTN_Quit;
+      private System.Windows.Forms.Label LB_J1_Depasse;
+      private System.Windows.Forms.Label LB_J2_Depasse;
    }
 }
