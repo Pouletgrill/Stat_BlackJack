@@ -26,13 +26,13 @@ namespace BlackJack
          J1 = new Joueur("J1");
          J2 = new Joueur("J2");
       }
-      public Jeu(int CPU_Level)
+      public Jeu(int CPU_Level, bool Compter)
       {
          InitializeComponent();
          J1 = new Joueur(CPU_Level,"J1");
          J2 = new Joueur("J2");
       }
-      public Jeu(int CPU_Level1, int CPU_Level2)
+      public Jeu(int CPU_Level1, bool Compter1, int CPU_Level2, bool Compter2)
       {
          InitializeComponent();
          J1 = new Joueur(CPU_Level1,"J1");
@@ -103,19 +103,21 @@ namespace BlackJack
       {     
             PictureBox PBox = new PictureBox();
             PBox.BackgroundImage = paquet[posPaquet].GetImage();
-            PBox.Height = 90; 
-            PBox.Width = 52;
-            
+            PBox.Height = 127; 
+            PBox.Width = 88;
+
             PBox.BackgroundImageLayout = ImageLayout.Stretch;
             if (joueur.GetNom() == "J1")
             {
                PBox.Location = CarteJ1;
-               CarteJ1.X += 20;
+               CarteJ1.X += 18;
+               CarteJ1.Y -= 2;
             }               
             else
             {
                PBox.Location = CarteJ2;
-               CarteJ2.X += 20;
+               CarteJ2.X += 18;
+               CarteJ2.Y -= 2;
             }
 
             if (joueur.GetTotal() + 11 > 21 && paquet[posPaquet].GetValeur()== 11)
@@ -125,9 +127,9 @@ namespace BlackJack
             
             joueur.SetTotal(joueur.GetTotal() + paquet[posPaquet].GetValeur());
             this.Controls.Add(PBox);
+            PBox.BringToFront();
             LB_Total_J1.Text = J1.GetTotal().ToString();
             LB_Total_J2.Text = J2.GetTotal().ToString();
-           
       }
 
       private void BTN_Commencer_Click(object sender, EventArgs e)
