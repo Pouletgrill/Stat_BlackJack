@@ -19,6 +19,12 @@ namespace BlackJack
       Joueur J1 ;
       Joueur J2;
       int CompteurCarte = 0;
+	   
+	  const int CarteHeight = 127;
+	  const int CarteWidth = 88;
+	  const int BigValueAs = 11;
+	  const int SmallValueAs = 1;
+	  const int LimitBlackjack = 21;
 
       public Jeu()
       {
@@ -99,53 +105,63 @@ namespace BlackJack
          }
       }
 
-      private void AfficherCarte(int posPaquet,Joueur joueur)
-      {     
-            PictureBox PBox = new PictureBox();
-            PBox.BackgroundImage = paquet[posPaquet].GetImage();
-            PBox.Height = 127; 
-            PBox.Width = 88;
+	  
 
-            PBox.BackgroundImageLayout = ImageLayout.Stretch;
-            if (joueur.GetNom() == "J1")
-            {
-               PBox.Location = CarteJ1;
-               CarteJ1.X += 18;
-               CarteJ1.Y -= 2;
-            }               
-            else
-            {
-               PBox.Location = CarteJ2;
-               CarteJ2.X += 18;
-               CarteJ2.Y -= 2;
-            }
+      private void AfficherUneCarte(int posPaquet,Joueur joueur)
+      {
+     	  if(posPaquet < 52 && posPaquet >=0)
+		  {
+			PictureBox PBox = new PictureBox();
+			PBox.BackgroundImage = paquet[posPaquet].GetImage();
+			PBox.Height = CarteHeight; 
+			PBox.Width = CarteWidth;
 
-            if (joueur.GetTotal() + 11 > 21 && paquet[posPaquet].GetValeur()== 11)
-            {
-               paquet[posPaquet].SetValeur(1);
-            }
-            
-            joueur.SetTotal(joueur.GetTotal() + paquet[posPaquet].GetValeur());
-            this.Controls.Add(PBox);
-            PBox.BringToFront();
-            LB_Total_J1.Text = J1.GetTotal().ToString();
-            LB_Total_J2.Text = J2.GetTotal().ToString();
-      }
+			PBox.BackgroundImageLayout = ImageLayout.Stretch;
+			if (joueur.GetNom() == "J1")
+			{
+			   PBox.Location = CarteJ1;
+			   CarteJ1.X += 18;
+			   CarteJ1.Y -= 2;
+			}               
+			else
+			{
+			   PBox.Location = CarteJ2;
+			   CarteJ2.X += 18;
+			   CarteJ2.Y -= 2;
+			}
 
+			if (joueur.GetTotal() + paquet[posPaquet].GetValeur() > LimitBlackjack && paquet[posPaquet].GetValeur() == BigValueAs)
+			{
+			   paquet[posPaquet].SetValeur(SmallValueAs);
+			}            
+			joueur.SetTotal(joueur.GetTotal() + paquet[posPaquet].GetValeur());
+
+			this.Controls.Add(PBox);
+			PBox.BringToFront(); 
+          }
+		  else
+		  {
+			MessageBox.Show("Possition dans le paquet de carte invalide");  
+		  
+		  }
+		  LB_Total_J1.Text = J1.GetTotal().ToString();
+	      LB_Total_J2.Text = J2.GetTotal().ToString();
+      }	     
+	  
+	
       private void BTN_Commencer_Click(object sender, EventArgs e)
       {
          while(CompteurCarte<4)
          {
             if (CompteurCarte % 2 == 0)
-               AfficherCarte(CompteurCarte, J1);
+               AfficherUneCarte(CompteurCarte, J1);
             else
-               AfficherCarte(CompteurCarte, J2);
+               AfficherUneCarte(CompteurCarte, J2);
             CompteurCarte++;
          }      
 
          BTN_Continuer_J1.Enabled = true;
-         BTN_Arreter_J1.Enabled = true;
-
+         BTN_Arreter_J1.Enabled = true;	 
          BTN_Commencer.Enabled = false;
          BTN_Commencer.Visible = false;
       }
@@ -153,7 +169,7 @@ namespace BlackJack
 
       private void BTN_Continuer_J1_Click(object sender, EventArgs e)
       {
-         AfficherCarte(CompteurCarte, J1);
+         AfficherUneCarte(CompteurCarte, J1);
          CompteurCarte++;
 
          BTN_Continuer_J1.Enabled = false;
@@ -165,7 +181,7 @@ namespace BlackJack
 
       private void BTN_Continuer_J2_Click(object sender, EventArgs e)
       {
-         AfficherCarte(CompteurCarte, J2);
+         AfficherUneCarte(CompteurCarte, J2);
          CompteurCarte++;
 
          BTN_Continuer_J1.Enabled = true;
