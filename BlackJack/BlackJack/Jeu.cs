@@ -154,20 +154,33 @@ namespace BlackJack
                 if (A_Qui_Le_Tour == 1)
                 {
                     AfficherUneCarte(CompteurCarte, J1);
+                    LB_J1_Stats.Text = J1.CalculerStat(paquet, CompteurCarte).ToString() + "%";
                     A_Qui_Le_Tour = 2;
                 }
                 else
                 {
                     AfficherUneCarte(CompteurCarte, J2);
+                    LB_J2_Stats.Text = J2.CalculerStat(paquet, CompteurCarte).ToString() + "%";
                     A_Qui_Le_Tour = 1;
                 }
                 CompteurCarte++;
             }
-
-            BTN_Continuer_J1.Enabled = true;
-            BTN_Arreter_J1.Enabled = true;
-            BTN_Commencer.Enabled = false;
             BTN_Commencer.Visible = false;
+            if (J1.JoueEncore())
+            {
+                BTN_Continuer_J1.Enabled = true;
+                BTN_Arreter_J1.Enabled = true;
+            }
+            else if (J2.JoueEncore())
+            {
+                BTN_Continuer_J2.Enabled = true;
+                BTN_Arreter_J2.Enabled = true;
+                A_Qui_Le_Tour = 2;
+            }
+            else
+            {
+                MessageBox.Show("Fin partie");
+            }
         }
 
         private void BTN_Continuer_J1_Click(object sender, EventArgs e)
@@ -216,21 +229,24 @@ namespace BlackJack
                     BTN_Arreter_J2.Enabled = false;
                 }
             }
-            if (J2.GetTotal() > 21)
-            {
-                J2.ArreteDeJouer();
-                LB_J2_Depasse.Visible = true;
-                LB_J2_Depasse.BringToFront();
-                BTN_Continuer_J2.Enabled = false;
-                BTN_Arreter_J2.Enabled = false;
-            }
+
             if (J1.GetTotal() > 21)
             {
                 J1.ArreteDeJouer();
                 LB_J1_Depasse.Visible = true;
                 LB_J1_Depasse.BringToFront();
+                LB_J1_Stats.Text = "0%";
                 BTN_Continuer_J1.Enabled = false;
                 BTN_Arreter_J1.Enabled = false;
+            }
+            if (J2.GetTotal() > 21)
+            {
+                J2.ArreteDeJouer();
+                LB_J2_Depasse.Visible = true;
+                LB_J2_Depasse.BringToFront();
+                LB_J2_Stats.Text = "0%";
+                BTN_Continuer_J2.Enabled = false;
+                BTN_Arreter_J2.Enabled = false;
             }
         }
 

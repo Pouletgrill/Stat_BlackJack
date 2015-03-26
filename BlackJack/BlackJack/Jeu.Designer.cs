@@ -100,7 +100,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(37, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 5;
@@ -109,7 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(627, 13);
+            this.label2.Location = new System.Drawing.Point(545, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 6;
@@ -118,7 +118,7 @@
             // LB_Total_J1
             // 
             this.LB_Total_J1.AutoSize = true;
-            this.LB_Total_J1.Location = new System.Drawing.Point(101, 12);
+            this.LB_Total_J1.Location = new System.Drawing.Point(125, 11);
             this.LB_Total_J1.Name = "LB_Total_J1";
             this.LB_Total_J1.Size = new System.Drawing.Size(13, 13);
             this.LB_Total_J1.TabIndex = 7;
@@ -127,7 +127,7 @@
             // LB_Total_J2
             // 
             this.LB_Total_J2.AutoSize = true;
-            this.LB_Total_J2.Location = new System.Drawing.Point(714, 12);
+            this.LB_Total_J2.Location = new System.Drawing.Point(632, 12);
             this.LB_Total_J2.Name = "LB_Total_J2";
             this.LB_Total_J2.Size = new System.Drawing.Size(13, 13);
             this.LB_Total_J2.TabIndex = 8;
@@ -170,7 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 26);
+            this.label3.Location = new System.Drawing.Point(68, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 13;
@@ -179,7 +179,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(658, 26);
+            this.label4.Location = new System.Drawing.Point(576, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 14;
@@ -188,7 +188,7 @@
             // LB_J1_Stats
             // 
             this.LB_J1_Stats.AutoSize = true;
-            this.LB_J1_Stats.Location = new System.Drawing.Point(101, 26);
+            this.LB_J1_Stats.Location = new System.Drawing.Point(125, 25);
             this.LB_J1_Stats.Name = "LB_J1_Stats";
             this.LB_J1_Stats.Size = new System.Drawing.Size(33, 13);
             this.LB_J1_Stats.TabIndex = 15;
@@ -197,7 +197,7 @@
             // LB_J2_Stats
             // 
             this.LB_J2_Stats.AutoSize = true;
-            this.LB_J2_Stats.Location = new System.Drawing.Point(714, 26);
+            this.LB_J2_Stats.Location = new System.Drawing.Point(632, 26);
             this.LB_J2_Stats.Name = "LB_J2_Stats";
             this.LB_J2_Stats.Size = new System.Drawing.Size(33, 13);
             this.LB_J2_Stats.TabIndex = 16;
