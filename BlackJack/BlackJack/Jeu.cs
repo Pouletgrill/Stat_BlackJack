@@ -172,14 +172,20 @@ namespace BlackJack
 
         private void BTN_Continuer_J1_Click(object sender, EventArgs e)
         {
-            Jouer(1);
-
+            LB_J1_Stats.Text = J1.CalculerStat(paquet, CompteurCarte).ToString() + "%";
+            if (J1.JoueEncore())
+            {
+                Jouer(1);
+            }
         }
 
         private void BTN_Continuer_J2_Click(object sender, EventArgs e)
         {
-            Jouer(2);
-
+            LB_J2_Stats.Text = J2.CalculerStat(paquet, CompteurCarte).ToString() + "%";
+            if (J2.JoueEncore())
+            {
+                Jouer(2);
+            }
         }
 
         private void Jouer(int QuiJoue)

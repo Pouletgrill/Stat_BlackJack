@@ -41,6 +41,10 @@
             this.BTN_Quit = new System.Windows.Forms.Button();
             this.LB_J1_Depasse = new System.Windows.Forms.Label();
             this.LB_J2_Depasse = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LB_J1_Stats = new System.Windows.Forms.Label();
+            this.LB_J2_Stats = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BTN_Continuer_J1
@@ -163,6 +167,42 @@
             this.LB_J2_Depasse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LB_J2_Depasse.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(44, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Chance :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(658, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Chance :";
+            // 
+            // LB_J1_Stats
+            // 
+            this.LB_J1_Stats.AutoSize = true;
+            this.LB_J1_Stats.Location = new System.Drawing.Point(101, 26);
+            this.LB_J1_Stats.Name = "LB_J1_Stats";
+            this.LB_J1_Stats.Size = new System.Drawing.Size(33, 13);
+            this.LB_J1_Stats.TabIndex = 15;
+            this.LB_J1_Stats.Text = "100%";
+            // 
+            // LB_J2_Stats
+            // 
+            this.LB_J2_Stats.AutoSize = true;
+            this.LB_J2_Stats.Location = new System.Drawing.Point(714, 26);
+            this.LB_J2_Stats.Name = "LB_J2_Stats";
+            this.LB_J2_Stats.Size = new System.Drawing.Size(33, 13);
+            this.LB_J2_Stats.TabIndex = 16;
+            this.LB_J2_Stats.Text = "100%";
+            // 
             // Jeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +210,10 @@
             this.BackgroundImage = global::BlackJack.Properties.Resources.images;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(751, 289);
+            this.Controls.Add(this.LB_J2_Stats);
+            this.Controls.Add(this.LB_J1_Stats);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.LB_J2_Depasse);
             this.Controls.Add(this.LB_J1_Depasse);
             this.Controls.Add(this.BTN_Quit);
@@ -207,5 +251,9 @@
       private System.Windows.Forms.Button BTN_Quit;
       private System.Windows.Forms.Label LB_J1_Depasse;
       private System.Windows.Forms.Label LB_J2_Depasse;
+      private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.Label LB_J1_Stats;
+      private System.Windows.Forms.Label LB_J2_Stats;
    }
 }

@@ -54,38 +54,37 @@ namespace BlackJack
         public int CalculerStat(List<Carte> paquet, int IndexCarte)
         {
             int Stats = 0;//    %
-            if (GetCpuLevel() > 0 && GetTotal() > 10)//si le total est trop bas ou le joueur n'est pas un CPU
+            //si le total est trop bas
+            if (GetTotal() > 10)
             {
                 if (Compte_carte_)//Avec comptage de cartes
                 {
                     for (int i = IndexCarte; i < paquet.Count(); i++)
                     {
-
+                        //Calcule stat
                     }
                 }
                 else //Sans comptage de cartes
                 {
                     for (int i = IndexCarte; i < paquet.Count(); i++)
                     {
-
+                        //Calcule stat
                     }
                 }
-                if (GetCpuLevel() == 1)
+
+                //On vérifie si on continue ou pas
+                if (GetCpuLevel() == 1 && Stats <= 50)//Courageux
                 {
-
+                    ArreteDeJouer();
                 }
-                else if (GetCpuLevel() == 2)
+                else if (GetCpuLevel() == 2 && Stats <= 65)//Moyen
                 {
-
+                    ArreteDeJouer();
                 }
-                else if (GetCpuLevel() == 3)
+                else if (GetCpuLevel() == 3 && Stats <= 80)//Prudent
                 {
-
+                    ArreteDeJouer();
                 }
-            }
-            else //ne retourne que les stats
-            {
-
             }
             return Stats;
         }
