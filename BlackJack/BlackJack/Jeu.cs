@@ -35,14 +35,14 @@ namespace BlackJack
       public Jeu(int CPU_Level, bool Compter)
       {
          InitializeComponent();
-         J1 = new Joueur(CPU_Level,"J1");
+         J1 = new Joueur(CPU_Level,Compter,"J1");
          J2 = new Joueur("J2");
       }
       public Jeu(int CPU_Level1, bool Compter1, int CPU_Level2, bool Compter2)
       {
          InitializeComponent();
-         J1 = new Joueur(CPU_Level1,"J1");
-         J2 = new Joueur(CPU_Level2,"J2");
+         J1 = new Joueur(CPU_Level1,Compter1,"J1");
+         J2 = new Joueur(CPU_Level2,Compter2,"J2");
 
       }
       private void Jeu_Load(object sender, EventArgs e)

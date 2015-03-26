@@ -56,6 +56,20 @@ namespace BlackJack
             int Stats = 0;//    %
             if (GetCpuLevel() > 0 && GetTotal() > 10)//si le total est trop bas ou le joueur n'est pas un CPU
             {
+                if (Compte_carte_)//Avec comptage de cartes
+                {
+                    for (int i = IndexCarte; i < paquet.Count(); i++)
+                    {
+
+                    }
+                }
+                else //Sans comptage de cartes
+                {
+                    for (int i = IndexCarte; i < paquet.Count(); i++)
+                    {
+
+                    }
+                }
                 if (GetCpuLevel() == 1)
                 {
 
@@ -71,7 +85,7 @@ namespace BlackJack
             }
             else //ne retourne que les stats
             {
-               
+
             }
             return Stats;
         }
