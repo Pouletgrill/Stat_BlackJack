@@ -132,7 +132,7 @@
             this.BTN_Quit.Location = new System.Drawing.Point(343, 252);
             this.BTN_Quit.Name = "BTN_Quit";
             this.BTN_Quit.Size = new System.Drawing.Size(75, 23);
-            this.BTN_Quit.TabIndex = 9;
+            this.BTN_Quit.TabIndex = 10;
             this.BTN_Quit.Text = "Arrêter le jeu";
             this.BTN_Quit.UseVisualStyleBackColor = true;
             this.BTN_Quit.Click += new System.EventHandler(this.BTN_Quit_Click);
