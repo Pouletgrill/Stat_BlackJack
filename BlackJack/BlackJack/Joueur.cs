@@ -51,9 +51,9 @@ namespace BlackJack
         }
 
         //si les conditions ne sont plus favorable, le joueur s'arrête de lui même
-        public int CalculerStat(List<Carte> paquet, int IndexCarte)
+        public float CalculerStat(List<Carte> paquet, int IndexCarte)
         {
-            int Stats = 0;//    %
+            float Stats = 0;//    %
             //si le total est trop bas
             if (GetTotal() > 10)
             {
@@ -66,22 +66,27 @@ namespace BlackJack
                 }
                 else //Sans comptage de cartes
                 {
+                    int nbChance=0;
                     for (int i = IndexCarte; i < paquet.Count(); i++)
                     {
-                        //Calcule stat
+                        if (paquet[i].GetValeur() < (21-GetTotal()))
+                        {
+                            nbChance++;
+                        }
                     }
+                    Stats = ((float)nbChance / (paquet.Count() - IndexCarte))*100;                    
                 }
 
                 //On vérifie si on continue ou pas
-                if (GetCpuLevel() == 1 && Stats <= 50)//Courageux
+                if (GetCpuLevel() == 1 && Stats < 50)//Courageux
                 {
                     ArreteDeJouer();
                 }
-                else if (GetCpuLevel() == 2 && Stats <= 65)//Moyen
+                else if (GetCpuLevel() == 2 && Stats < 65)//Moyen
                 {
                     ArreteDeJouer();
                 }
-                else if (GetCpuLevel() == 3 && Stats <= 80)//Prudent
+                else if (GetCpuLevel() == 3 && Stats < 80)//Prudent
                 {
                     ArreteDeJouer();
                 }
