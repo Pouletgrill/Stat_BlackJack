@@ -53,7 +53,7 @@ namespace BlackJack
         //si les conditions ne sont plus favorable, le joueur s'arrête de lui même
         public float CalculerStat(List<Carte> paquet, int IndexCarte)
         {
-            float Stats = 0;//    %
+            float Stats = 100;//    %
             //si le total est trop bas
             if (GetTotal() > 10)
             {
@@ -69,6 +69,7 @@ namespace BlackJack
                     int nbChance=0;
                     for (int i = IndexCarte; i < paquet.Count(); i++)
                     {
+                        int fff = GetTotal();
                         if (paquet[i].GetValeur() < (21-GetTotal()))
                         {
                             nbChance++;
