@@ -10,10 +10,16 @@ namespace BlackJack
    {
       int TotalPoint = 0;
       String Nom_;
+      float stats_ = 100;
       int Cpu_Level_ = -1;
       bool Joue_ = true;
       bool Compte_carte_ = false;
+      string pense_ = "";
 
+      public string AfficherDetails()
+      {
+         return pense_;
+      }
       public Joueur(String Nom)
       {
          Nom_ = Nom;
@@ -25,6 +31,10 @@ namespace BlackJack
          Compte_carte_ = CompteCarte;
       }
 
+      public float GetStat()
+      {
+         return stats_;
+      }
       public int GetTotal()
       {
          return TotalPoint;
@@ -49,33 +59,39 @@ namespace BlackJack
       {
          return Joue_;
       }
-      public bool AIJouer(float Stats)
+      public bool AIJoueEncore()
       {
          bool Continue = true;
          //On vérifie si on continue ou pas
-         if (GetCpuLevel() == 1 && Stats < 50)//Courageux
+         if (GetCpuLevel() == 1 && GetStat() < 50)//Courageux
          {
             ArreteDeJouer();
             Continue = false;
+            pense_ += Nom_ + ": Arrêt Courageux à " + stats_.ToString() + "%\n";
          }
-         else if (GetCpuLevel() == 2 && Stats < 65)//Moyen
+         else if (GetCpuLevel() == 2 && GetStat() < 65)//Moyen
          {
             ArreteDeJouer();
             Continue = false;
+            pense_ += Nom_ + ": Arrêt Moyen à " + stats_.ToString() + "%\n";
          }
-         else if (GetCpuLevel() == 3 && Stats < 80)//Prudent
+         else if (GetCpuLevel() == 3 && GetStat() < 80)//Prudent
          {
             ArreteDeJouer();
             Continue = false;
+            pense_ += Nom_ + ": Arrêt Prudent à " + stats_.ToString() + "%\n";
          }
-        
+         else
+         {
+            pense_ += Nom_ + ": continue a jouer à " + stats_.ToString() + "%\n";
+         }
+         pense_ += "...\n";
          return Continue;
-      } 
+      }
 
       //si les conditions ne sont plus favorable, le joueur s'arrête de lui même
-      public float CalculerStat(List<Carte> paquet, int IndexCarte)
+      public void CalculerStat(List<Carte> paquet, int IndexCarte)
       {
-         float Stats = 100;//    %
          //si le total est trop bas
          if (GetTotal() > 10)
          {
@@ -100,10 +116,9 @@ namespace BlackJack
                      nbChance++;
                   }
                }
-               Stats = ((float)nbChance / (paquet.Count() - IndexCarte)) * 100;
+               stats_ = ((float)nbChance / (paquet.Count() - IndexCarte)) * 100;
             }
          }
-         return Stats;
       }
    }
 }

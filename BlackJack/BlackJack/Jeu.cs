@@ -150,23 +150,36 @@ namespace BlackJack
             if (A_Qui_Le_Tour == 1)
             {
                AfficherUneCarte(CompteurCarte, J1);
-               LB_J1_Stats.Text = J1.CalculerStat(paquet, CompteurCarte).ToString() + "%";
+               J1.CalculerStat(paquet, CompteurCarte);
+               LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
                A_Qui_Le_Tour = 2;
             }
             else
             {
                AfficherUneCarte(CompteurCarte, J2);
-               LB_J2_Stats.Text = J2.CalculerStat(paquet, CompteurCarte).ToString() + "%";
+               J2.CalculerStat(paquet, CompteurCarte);
+               LB_J2_Stats.Text = J2.GetStat().ToString() + "%";
                A_Qui_Le_Tour = 1;
             }
             CompteurCarte++;
          }
          BTN_Commencer.Visible = false;
          ButtonRefresh();
-         if (J1.GetTotal() == 21 || J2.GetTotal() == 21)
+         CheckFinPartie();
+
+         while (J1.JoueEncore() || J2.JoueEncore())
          {
-            CheckFinPartie();
+            JouerAi();
          }
+
+         //if (J1.GetCpuLevel() > 0 && J2.GetCpuLevel() > 0)
+         //{
+         //   JouerAi(2);
+         //}
+         //else if (J1.GetCpuLevel() > 0)
+         //{
+         //   JouerAi(1);
+         //}
       }
 
       private void ButtonRefresh()
@@ -176,6 +189,7 @@ namespace BlackJack
          {
             BTN_Continuer_J1.Visible = false;
             BTN_Arreter_J1.Visible = false;
+            BTN_J1_Details.Visible = true;
          }
          else if (J1.JoueEncore() && A_Qui_Le_Tour == 1)
          {
@@ -206,6 +220,7 @@ namespace BlackJack
          {
             BTN_Continuer_J2.Visible = false;
             BTN_Arreter_J2.Visible = false;
+            BTN_J2_Details.Visible = true;
          }
          else if (J2.JoueEncore() && A_Qui_Le_Tour == 2)
          {
@@ -234,33 +249,60 @@ namespace BlackJack
       private void BTN_Continuer_J1_Click(object sender, EventArgs e)
       {
          Jouer(1);
-         LB_J1_Stats.Text = J1.CalculerStat(paquet, CompteurCarte).ToString() + "%";
+         J1.CalculerStat(paquet, CompteurCarte);
+         LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
       }
 
       private void BTN_Continuer_J2_Click(object sender, EventArgs e)
       {
 
          Jouer(2);
-         LB_J2_Stats.Text = J2.CalculerStat(paquet, CompteurCarte).ToString() + "%";
+         J2.CalculerStat(paquet, CompteurCarte);
+         LB_J2_Stats.Text = J2.GetStat().ToString() + "%";
+      }
+
+      private void JouerAi()
+      {
+         J1.CalculerStat(paquet, CompteurCarte);
+         J2.CalculerStat(paquet, CompteurCarte);
+         if (A_Qui_Le_Tour == 1 && J1.JoueEncore() && J1.AIJoueEncore())
+         {
+            LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
+            AfficherUneCarte(CompteurCarte, J1);
+            CompteurCarte++;
+            ButtonRefresh();
+         }            
+         A_Qui_Le_Tour = 2;
+         if (A_Qui_Le_Tour == 2  && J2.JoueEncore() && J2.AIJoueEncore())
+         {
+            LB_J2_Stats.Text = J2.GetStat().ToString() + "%";
+            AfficherUneCarte(CompteurCarte, J2);
+            CompteurCarte++;
+            ButtonRefresh();
+         }
+         A_Qui_Le_Tour = 1;
+         CheckFinPartie();
       }
 
       private void Jouer(int QuiJoue)
       {
-         if (QuiJoue == 1)
+         if (QuiJoue == 1 && J1.JoueEncore())
          {
             AfficherUneCarte(CompteurCarte, J1);
             CompteurCarte++;
             A_Qui_Le_Tour = 2;
+            QuiJoue = 2;
             ButtonRefresh();
          }
-         else
+          if (QuiJoue == 2 && J2.JoueEncore())
          {
             AfficherUneCarte(CompteurCarte, J2);
             CompteurCarte++;
             A_Qui_Le_Tour = 1;
+            QuiJoue = 1;
             ButtonRefresh();
          }
-         CheckFinPartie();
+          CheckFinPartie();
       }
 
       private void BTN_Arreter_J1_Click(object sender, EventArgs e)
@@ -368,5 +410,15 @@ namespace BlackJack
             this.Close();
          }
       }
+      private void BTN_J1_Details_Click(object sender, EventArgs e)
+      {
+         MessageBox.Show(J1.AfficherDetails());
+      }
+
+      private void BTN_J2_Details_Click(object sender, EventArgs e)
+      {
+         MessageBox.Show(J2.AfficherDetails());
+      }
+
    }
 }
