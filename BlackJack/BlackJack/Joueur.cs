@@ -85,7 +85,6 @@ namespace BlackJack
          {
             pense_ += Nom_ + ": continue a jouer à " + stats_.ToString() + "%\n";
          }
-         pense_ += "...\n";
          return Continue;
       }
 

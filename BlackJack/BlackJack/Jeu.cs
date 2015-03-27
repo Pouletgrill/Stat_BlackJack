@@ -166,20 +166,20 @@ namespace BlackJack
          BTN_Commencer.Visible = false;
          ButtonRefresh();
          CheckFinPartie();
-
-         while (J1.JoueEncore() || J2.JoueEncore())
+         if (J1.GetCpuLevel() > 0 && J2.GetCpuLevel() > 0)
          {
-            JouerAi();
+            while (J1.JoueEncore() || J2.JoueEncore())
+            {
+               JouerAi();
+            }
          }
-
-         //if (J1.GetCpuLevel() > 0 && J2.GetCpuLevel() > 0)
-         //{
-         //   JouerAi(2);
-         //}
-         //else if (J1.GetCpuLevel() > 0)
-         //{
-         //   JouerAi(1);
-         //}
+         else if (J1.GetCpuLevel() > 0)
+         {
+            J1.CalculerStat(paquet, CompteurCarte);
+            J1.AIJoueEncore();
+            LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
+            Jouer(1);
+         }
       }
 
       private void ButtonRefresh()
@@ -255,10 +255,16 @@ namespace BlackJack
 
       private void BTN_Continuer_J2_Click(object sender, EventArgs e)
       {
-
          Jouer(2);
          J2.CalculerStat(paquet, CompteurCarte);
          LB_J2_Stats.Text = J2.GetStat().ToString() + "%";
+         J1.CalculerStat(paquet, CompteurCarte);
+         if (J1.AIJoueEncore() && J1.JoueEncore() && J1.GetCpuLevel() > 0)
+         {
+            J1.CalculerStat(paquet, CompteurCarte);
+            LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
+            Jouer(1);
+         }
       }
 
       private void JouerAi()
@@ -271,9 +277,9 @@ namespace BlackJack
             AfficherUneCarte(CompteurCarte, J1);
             CompteurCarte++;
             ButtonRefresh();
-         }            
+         }
          A_Qui_Le_Tour = 2;
-         if (A_Qui_Le_Tour == 2  && J2.JoueEncore() && J2.AIJoueEncore())
+         if (A_Qui_Le_Tour == 2 && J2.JoueEncore() && J2.AIJoueEncore())
          {
             LB_J2_Stats.Text = J2.GetStat().ToString() + "%";
             AfficherUneCarte(CompteurCarte, J2);
@@ -294,7 +300,7 @@ namespace BlackJack
             QuiJoue = 2;
             ButtonRefresh();
          }
-          if (QuiJoue == 2 && J2.JoueEncore())
+         else if (QuiJoue == 2 && J2.JoueEncore())
          {
             AfficherUneCarte(CompteurCarte, J2);
             CompteurCarte++;
@@ -302,7 +308,7 @@ namespace BlackJack
             QuiJoue = 1;
             ButtonRefresh();
          }
-          CheckFinPartie();
+         CheckFinPartie();
       }
 
       private void BTN_Arreter_J1_Click(object sender, EventArgs e)
@@ -317,6 +323,13 @@ namespace BlackJack
          J2.ArreteDeJouer();
          ButtonRefresh();
          CheckFinPartie();
+         J1.CalculerStat(paquet, CompteurCarte);
+         if (J1.AIJoueEncore() && J1.JoueEncore() && J1.GetCpuLevel() > 0)
+         {
+            J1.CalculerStat(paquet, CompteurCarte);
+            LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
+            Jouer(1);
+         }
       }
 
       private void CheckFinPartie()
