@@ -50,10 +50,6 @@ namespace BlackJack
         {
             LoadImage();
             MixCards();
-            BTN_Continuer_J1.Enabled = false;
-            BTN_Arreter_J1.Enabled = false;
-            BTN_Continuer_J2.Enabled = false;
-            BTN_Arreter_J2.Enabled = false;
         }
 
         private void LoadImage()
@@ -140,7 +136,7 @@ namespace BlackJack
             }
             else
             {
-                MessageBox.Show("Possition dans le paquet de carte invalide");
+                MessageBox.Show("Position dans le paquet de carte invalide");
 
             }
             LB_Total_J1.Text = J1.GetTotal().ToString();
@@ -166,20 +162,42 @@ namespace BlackJack
                 CompteurCarte++;
             }
             BTN_Commencer.Visible = false;
-            if (J1.JoueEncore())
+            ButtonRefresh();
+        }
+
+        private void ButtonRefresh()
+        {
+            //Joueur1/////////////////////////////////////////
+            if (J1.GetCpuLevel() > 0)
+            {
+                BTN_Continuer_J1.Visible = false;
+                BTN_Arreter_J1.Visible = false;
+            }
+            else if (J1.JoueEncore() && A_Qui_Le_Tour == 1)
             {
                 BTN_Continuer_J1.Enabled = true;
                 BTN_Arreter_J1.Enabled = true;
             }
-            else if (J2.JoueEncore())
+            else
+            {
+                BTN_Continuer_J1.Enabled = false;
+                BTN_Arreter_J1.Enabled = false;
+            }
+            //Joueur2/////////////////////////////////////////
+            if (J2.GetCpuLevel() > 0)
+            {
+                BTN_Continuer_J2.Visible = false;
+                BTN_Arreter_J2.Visible = false;
+            }
+            else if (J2.JoueEncore() && A_Qui_Le_Tour == 2)
             {
                 BTN_Continuer_J2.Enabled = true;
                 BTN_Arreter_J2.Enabled = true;
-                A_Qui_Le_Tour = 2;
             }
             else
             {
-                MessageBox.Show("Fin partie");
+                BTN_Continuer_J2.Enabled = false;
+                BTN_Arreter_J2.Enabled = false;
             }
         }
 
@@ -207,30 +225,18 @@ namespace BlackJack
             {
                 AfficherUneCarte(CompteurCarte, J1);
                 CompteurCarte++;
-
-                if (J2.JoueEncore())
-                {
-                    BTN_Continuer_J1.Enabled = false;
-                    BTN_Arreter_J1.Enabled = false;
-                    BTN_Continuer_J2.Enabled = true;
-                    BTN_Arreter_J2.Enabled = true;
-                }
+                A_Qui_Le_Tour = 2;
+                ButtonRefresh();
             }
             else
             {
                 AfficherUneCarte(CompteurCarte, J2);
                 CompteurCarte++;
-
-                if (J1.JoueEncore())
-                {
-                    BTN_Continuer_J1.Enabled = true;
-                    BTN_Arreter_J1.Enabled = true;
-                    BTN_Continuer_J2.Enabled = false;
-                    BTN_Arreter_J2.Enabled = false;
-                }
+                A_Qui_Le_Tour = 2;
+                ButtonRefresh();
             }
 
-            if (J1.GetTotal() > 21)
+            if (J1.GetTotal() > LimitBlackjack)
             {
                 J1.ArreteDeJouer();
                 LB_J1_Depasse.Visible = true;
@@ -238,8 +244,9 @@ namespace BlackJack
                 LB_J1_Stats.Text = "0%";
                 BTN_Continuer_J1.Enabled = false;
                 BTN_Arreter_J1.Enabled = false;
+                FinDeLaPartie();
             }
-            if (J2.GetTotal() > 21)
+            if (J2.GetTotal() > LimitBlackjack)
             {
                 J2.ArreteDeJouer();
                 LB_J2_Depasse.Visible = true;
@@ -247,50 +254,43 @@ namespace BlackJack
                 LB_J2_Stats.Text = "0%";
                 BTN_Continuer_J2.Enabled = false;
                 BTN_Arreter_J2.Enabled = false;
+                FinDeLaPartie();
             }
         }
 
         private void BTN_Arreter_J1_Click(object sender, EventArgs e)
         {
             J1.ArreteDeJouer();
-
-            if (J2.JoueEncore())
-            {
-                BTN_Continuer_J1.Enabled = false;
-                BTN_Arreter_J1.Enabled = false;
-                BTN_Continuer_J2.Enabled = true;
-                BTN_Arreter_J2.Enabled = true;
-            }
-            else
-            {
                 FinDeLaPartie();
-            }
+            
         }
 
         private void BTN_Arreter_J2_Click(object sender, EventArgs e)
         {
             J2.ArreteDeJouer();
-
-            if (J1.JoueEncore())
-            {
-                BTN_Continuer_J1.Enabled = true;
-                BTN_Arreter_J1.Enabled = true;
-                BTN_Continuer_J2.Enabled = false;
-                BTN_Arreter_J2.Enabled = false;
-            }
-            else
-            {
-                FinDeLaPartie();
-            }
+            FinDeLaPartie();
         }
 
         private void FinDeLaPartie()
         {
-            MessageBox.Show("fin de la partie");
             BTN_Continuer_J1.Enabled = false;
             BTN_Arreter_J1.Enabled = false;
             BTN_Continuer_J2.Enabled = false;
             BTN_Arreter_J2.Enabled = false;
+            if ((LimitBlackjack - J1.GetTotal()) < (LimitBlackjack - J2.GetTotal()) &&
+                (LimitBlackjack - J1.GetTotal()) >= 0)
+            {
+                LB_J1_Depasse.Text = "BlackJack!";
+                LB_J1_Depasse.Visible = true;
+                LB_J1_Depasse.BringToFront();
+            }
+            if ((LimitBlackjack - J2.GetTotal()) < (LimitBlackjack - J1.GetTotal()) &&
+                (LimitBlackjack - J1.GetTotal()) >= 0)
+            {
+                LB_J2_Depasse.Text = "BlackJack!";
+                LB_J2_Depasse.Visible = true;
+                LB_J2_Depasse.BringToFront();
+            }
         }
 
         private void BTN_Quit_Click(object sender, EventArgs e)

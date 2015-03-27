@@ -49,6 +49,7 @@
             // 
             // BTN_Continuer_J1
             // 
+            this.BTN_Continuer_J1.Enabled = false;
             this.BTN_Continuer_J1.Location = new System.Drawing.Point(15, 252);
             this.BTN_Continuer_J1.Name = "BTN_Continuer_J1";
             this.BTN_Continuer_J1.Size = new System.Drawing.Size(103, 31);
@@ -59,6 +60,7 @@
             // 
             // BTN_Arreter_J1
             // 
+            this.BTN_Arreter_J1.Enabled = false;
             this.BTN_Arreter_J1.Location = new System.Drawing.Point(124, 252);
             this.BTN_Arreter_J1.Name = "BTN_Arreter_J1";
             this.BTN_Arreter_J1.Size = new System.Drawing.Size(107, 31);
@@ -69,6 +71,7 @@
             // 
             // BTN_Continuer_J2
             // 
+            this.BTN_Continuer_J2.Enabled = false;
             this.BTN_Continuer_J2.Location = new System.Drawing.Point(523, 252);
             this.BTN_Continuer_J2.Name = "BTN_Continuer_J2";
             this.BTN_Continuer_J2.Size = new System.Drawing.Size(103, 31);
@@ -79,6 +82,7 @@
             // 
             // BTN_Arreter_J2
             // 
+            this.BTN_Arreter_J2.Enabled = false;
             this.BTN_Arreter_J2.Location = new System.Drawing.Point(632, 252);
             this.BTN_Arreter_J2.Name = "BTN_Arreter_J2";
             this.BTN_Arreter_J2.Size = new System.Drawing.Size(107, 31);
