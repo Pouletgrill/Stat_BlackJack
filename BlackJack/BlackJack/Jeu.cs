@@ -259,12 +259,16 @@ namespace BlackJack
          J2.CalculerStat(paquet, CompteurCarte);
          LB_J2_Stats.Text = J2.GetStat().ToString() + "%";
          J1.CalculerStat(paquet, CompteurCarte);
-         if (J1.AIJoueEncore() && J1.JoueEncore() && J1.GetCpuLevel() > 0)
+         J1.AIJoueEncore();
+         if (J1.JoueEncore() && J1.GetCpuLevel() > 0)
          {
-            J1.CalculerStat(paquet, CompteurCarte);
-            LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
             Jouer(1);
          }
+         else if (J1.GetCpuLevel() > 0 && !J1.JoueEncore())
+         {
+             ButtonRefresh();
+         }
+         CheckFinPartie();
       }
 
       private void JouerAi()
@@ -297,7 +301,7 @@ namespace BlackJack
             AfficherUneCarte(CompteurCarte, J1);
             CompteurCarte++;
             A_Qui_Le_Tour = 2;
-            QuiJoue = 2;
+            QuiJoue = 2;             
             ButtonRefresh();
          }
          else if (QuiJoue == 2 && J2.JoueEncore())
@@ -307,6 +311,12 @@ namespace BlackJack
             A_Qui_Le_Tour = 1;
             QuiJoue = 1;
             ButtonRefresh();
+         }
+          else if (QuiJoue == 1 && !J1.JoueEncore())
+         {
+             A_Qui_Le_Tour = 2;
+             QuiJoue = 2;
+             ButtonRefresh();
          }
          CheckFinPartie();
       }
@@ -322,14 +332,18 @@ namespace BlackJack
       {
          J2.ArreteDeJouer();
          ButtonRefresh();
-         CheckFinPartie();
          J1.CalculerStat(paquet, CompteurCarte);
-         if (J1.AIJoueEncore() && J1.JoueEncore() && J1.GetCpuLevel() > 0)
+         J1.AIJoueEncore();
+         if (J1.GetCpuLevel() > 0 && J1.JoueEncore())
          {
-            J1.CalculerStat(paquet, CompteurCarte);
             LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
             Jouer(1);
          }
+         else if (J1.GetCpuLevel() > 0 && !J1.JoueEncore())
+         {
+             ButtonRefresh();
+         }
+         CheckFinPartie();
       }
 
       private void CheckFinPartie()
