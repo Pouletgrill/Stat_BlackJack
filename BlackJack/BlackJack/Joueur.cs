@@ -61,31 +61,27 @@ namespace BlackJack
       }
       public bool AIJoueEncore()
       {
-         bool Continue = true;
          //On vérifie si on continue ou pas
-         if (GetCpuLevel() == 1 && GetStat() < 50)//Courageux
+         if (JoueEncore() && GetCpuLevel() == 1 && GetStat() < 50)//Courageux
          {
             ArreteDeJouer();
-            Continue = false;
             pense_ += Nom_ + ": Arrêt Courageux à " + stats_.ToString() + "%\n";
          }
-         else if (GetCpuLevel() == 2 && GetStat() < 65)//Moyen
+         else if (JoueEncore() && GetCpuLevel() == 2 && GetStat() < 65)//Moyen
          {
             ArreteDeJouer();
-            Continue = false;
             pense_ += Nom_ + ": Arrêt Moyen à " + stats_.ToString() + "%\n";
          }
-         else if (GetCpuLevel() == 3 && GetStat() < 80)//Prudent
+         else if (JoueEncore() && GetCpuLevel() == 3 && GetStat() < 80)//Prudent
          {
             ArreteDeJouer();
-            Continue = false;
             pense_ += Nom_ + ": Arrêt Prudent à " + stats_.ToString() + "%\n";
          }
          else
          {
             pense_ += Nom_ + ": continue a jouer à " + stats_.ToString() + "%\n";
          }
-         return Continue;
+         return JoueEncore();
       }
 
       //si les conditions ne sont plus favorable, le joueur s'arrête de lui même
