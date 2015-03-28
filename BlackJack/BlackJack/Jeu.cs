@@ -179,6 +179,8 @@ namespace BlackJack
                 LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
                 J1.AIJoueEncore();
                 Jouer(1);
+                J1.CalculerStat(paquet, CompteurCarte);
+                LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
             }
         }
 
@@ -268,6 +270,7 @@ namespace BlackJack
             LB_J2_Stats.Text = J2.GetStat().ToString() + "%";
             J1.CalculerStat(paquet, CompteurCarte);
             J1.AIJoueEncore();
+            LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
             if (J1.JoueEncore() && J1.GetCpuLevel() > 0)
             {
                 LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
@@ -342,16 +345,16 @@ namespace BlackJack
             J2.ArreteDeJouer();
             ButtonRefresh();
             J1.CalculerStat(paquet, CompteurCarte);
-            J1.AIJoueEncore();
-            if (J1.GetCpuLevel() > 0 && J1.JoueEncore())
+            LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
+            while (J1.AIJoueEncore() && J1.GetCpuLevel() > 0 )
             {
+                J1.CalculerStat(paquet, CompteurCarte);
                 LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
                 Jouer(1);
-            }
-            else if (J1.GetCpuLevel() > 0 && !J1.JoueEncore())
-            {
                 ButtonRefresh();
+                CheckFinPartie();
             }
+            ButtonRefresh();
             CheckFinPartie();
         }
 

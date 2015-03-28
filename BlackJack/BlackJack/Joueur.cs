@@ -77,7 +77,7 @@ namespace BlackJack
             ArreteDeJouer();
             pense_ += Nom_ + ": Arrêt Prudent à " + stats_.ToString() + "%\n";
          }
-         else
+         else if (JoueEncore())
          {
             pense_ += Nom_ + ": continue a jouer à " + stats_.ToString() + "%\n";
          }
