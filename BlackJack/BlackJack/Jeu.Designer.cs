@@ -51,56 +51,66 @@
             // 
             // BTN_Continuer_J1
             // 
+            this.BTN_Continuer_J1.BackColor = System.Drawing.Color.Green;
             this.BTN_Continuer_J1.Enabled = false;
+            this.BTN_Continuer_J1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Continuer_J1.Location = new System.Drawing.Point(15, 252);
             this.BTN_Continuer_J1.Name = "BTN_Continuer_J1";
             this.BTN_Continuer_J1.Size = new System.Drawing.Size(103, 31);
             this.BTN_Continuer_J1.TabIndex = 0;
             this.BTN_Continuer_J1.Text = "Continuer";
-            this.BTN_Continuer_J1.UseVisualStyleBackColor = true;
+            this.BTN_Continuer_J1.UseVisualStyleBackColor = false;
             this.BTN_Continuer_J1.Click += new System.EventHandler(this.BTN_Continuer_J1_Click);
             // 
             // BTN_Arreter_J1
             // 
+            this.BTN_Arreter_J1.BackColor = System.Drawing.Color.Green;
             this.BTN_Arreter_J1.Enabled = false;
+            this.BTN_Arreter_J1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Arreter_J1.Location = new System.Drawing.Point(124, 252);
             this.BTN_Arreter_J1.Name = "BTN_Arreter_J1";
             this.BTN_Arreter_J1.Size = new System.Drawing.Size(107, 31);
             this.BTN_Arreter_J1.TabIndex = 1;
             this.BTN_Arreter_J1.Text = "Arrêter";
-            this.BTN_Arreter_J1.UseVisualStyleBackColor = true;
+            this.BTN_Arreter_J1.UseVisualStyleBackColor = false;
             this.BTN_Arreter_J1.Click += new System.EventHandler(this.BTN_Arreter_J1_Click);
             // 
             // BTN_Continuer_J2
             // 
+            this.BTN_Continuer_J2.BackColor = System.Drawing.Color.Green;
             this.BTN_Continuer_J2.Enabled = false;
+            this.BTN_Continuer_J2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Continuer_J2.Location = new System.Drawing.Point(523, 252);
             this.BTN_Continuer_J2.Name = "BTN_Continuer_J2";
             this.BTN_Continuer_J2.Size = new System.Drawing.Size(103, 31);
             this.BTN_Continuer_J2.TabIndex = 2;
             this.BTN_Continuer_J2.Text = "Continuer";
-            this.BTN_Continuer_J2.UseVisualStyleBackColor = true;
+            this.BTN_Continuer_J2.UseVisualStyleBackColor = false;
             this.BTN_Continuer_J2.Click += new System.EventHandler(this.BTN_Continuer_J2_Click);
             // 
             // BTN_Arreter_J2
             // 
+            this.BTN_Arreter_J2.BackColor = System.Drawing.Color.Green;
             this.BTN_Arreter_J2.Enabled = false;
+            this.BTN_Arreter_J2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Arreter_J2.Location = new System.Drawing.Point(632, 252);
             this.BTN_Arreter_J2.Name = "BTN_Arreter_J2";
             this.BTN_Arreter_J2.Size = new System.Drawing.Size(107, 31);
             this.BTN_Arreter_J2.TabIndex = 3;
             this.BTN_Arreter_J2.Text = "Arrêter";
-            this.BTN_Arreter_J2.UseVisualStyleBackColor = true;
+            this.BTN_Arreter_J2.UseVisualStyleBackColor = false;
             this.BTN_Arreter_J2.Click += new System.EventHandler(this.BTN_Arreter_J2_Click);
             // 
             // BTN_Commencer
             // 
+            this.BTN_Commencer.BackColor = System.Drawing.Color.Green;
+            this.BTN_Commencer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Commencer.Location = new System.Drawing.Point(298, 12);
             this.BTN_Commencer.Name = "BTN_Commencer";
             this.BTN_Commencer.Size = new System.Drawing.Size(164, 70);
             this.BTN_Commencer.TabIndex = 4;
             this.BTN_Commencer.Text = "Commencer";
-            this.BTN_Commencer.UseVisualStyleBackColor = true;
+            this.BTN_Commencer.UseVisualStyleBackColor = false;
             this.BTN_Commencer.Click += new System.EventHandler(this.BTN_Commencer_Click);
             // 
             // label1
@@ -145,12 +155,14 @@
             // 
             // BTN_Quit
             // 
+            this.BTN_Quit.BackColor = System.Drawing.Color.Green;
+            this.BTN_Quit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Quit.Location = new System.Drawing.Point(343, 252);
             this.BTN_Quit.Name = "BTN_Quit";
             this.BTN_Quit.Size = new System.Drawing.Size(75, 23);
             this.BTN_Quit.TabIndex = 10;
             this.BTN_Quit.Text = "Arrêter le jeu";
-            this.BTN_Quit.UseVisualStyleBackColor = true;
+            this.BTN_Quit.UseVisualStyleBackColor = false;
             this.BTN_Quit.Click += new System.EventHandler(this.BTN_Quit_Click);
             // 
             // LB_J1_Depasse
@@ -219,23 +231,27 @@
             // 
             // BTN_J2_Details
             // 
+            this.BTN_J2_Details.BackColor = System.Drawing.Color.Green;
+            this.BTN_J2_Details.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_J2_Details.Location = new System.Drawing.Point(468, 12);
             this.BTN_J2_Details.Name = "BTN_J2_Details";
             this.BTN_J2_Details.Size = new System.Drawing.Size(47, 23);
             this.BTN_J2_Details.TabIndex = 17;
             this.BTN_J2_Details.Text = "Details";
-            this.BTN_J2_Details.UseVisualStyleBackColor = true;
+            this.BTN_J2_Details.UseVisualStyleBackColor = false;
             this.BTN_J2_Details.Visible = false;
             this.BTN_J2_Details.Click += new System.EventHandler(this.BTN_J2_Details_Click);
             // 
             // BTN_J1_Details
             // 
+            this.BTN_J1_Details.BackColor = System.Drawing.Color.Green;
+            this.BTN_J1_Details.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_J1_Details.Location = new System.Drawing.Point(245, 13);
             this.BTN_J1_Details.Name = "BTN_J1_Details";
             this.BTN_J1_Details.Size = new System.Drawing.Size(47, 23);
             this.BTN_J1_Details.TabIndex = 18;
             this.BTN_J1_Details.Text = "Details";
-            this.BTN_J1_Details.UseVisualStyleBackColor = true;
+            this.BTN_J1_Details.UseVisualStyleBackColor = false;
             this.BTN_J1_Details.Visible = false;
             this.BTN_J1_Details.Click += new System.EventHandler(this.BTN_J1_Details_Click);
             // 

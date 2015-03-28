@@ -346,7 +346,7 @@ namespace BlackJack
             ButtonRefresh();
             J1.CalculerStat(paquet, CompteurCarte);
             LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
-            while (J1.AIJoueEncore() && J1.GetCpuLevel() > 0 )
+            while (J1.AIJoueEncore() && J1.GetCpuLevel() > 0)
             {
                 J1.CalculerStat(paquet, CompteurCarte);
                 LB_J1_Stats.Text = J1.GetStat().ToString() + "%";
@@ -411,7 +411,7 @@ namespace BlackJack
                     LB_J1_Depasse.Visible = true;
                     LB_J1_Depasse.BringToFront();
                 }
-
+                J1.ArreteDeJouer();
             }
             if (J2.GetTotal() < J1.GetTotal())
             {
@@ -427,6 +427,7 @@ namespace BlackJack
                     LB_J2_Depasse.Visible = true;
                     LB_J2_Depasse.BringToFront();
                 }
+                J2.ArreteDeJouer();
             }
             if (J1.GetTotal() == J2.GetTotal())
             {
@@ -436,17 +437,26 @@ namespace BlackJack
                 LB_J1_Depasse.Text = "Partie Égale..";
                 LB_J1_Depasse.Visible = true;
                 LB_J1_Depasse.BringToFront();
+                J1.ArreteDeJouer();
+                J2.ArreteDeJouer();
             }
         }
 
         private void BTN_Quit_Click(object sender, EventArgs e)
         {
-            DialogResult result1 = MessageBox.Show("Voulez-vous vraiment quitter le Jeu ?",
-            "Fermeture du jeu..",
-            MessageBoxButtons.YesNo);
-            if (result1 == System.Windows.Forms.DialogResult.Yes)
+            if (!J1.JoueEncore() || !J2.JoueEncore())
             {
                 this.Close();
+            }
+            else
+            {
+                DialogResult result1 = MessageBox.Show("Voulez-vous vraiment quitter le Jeu ?",
+                "Fermeture du jeu..",
+                MessageBoxButtons.YesNo);
+                if (result1 == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.Close();
+                }
             }
         }
         private void BTN_J1_Details_Click(object sender, EventArgs e)
