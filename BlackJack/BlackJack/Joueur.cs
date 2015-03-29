@@ -92,26 +92,23 @@ namespace BlackJack
          {
             if (Compte_carte_)//Avec comptage de cartes
             {
-               for (int i = IndexCarte; i < paquet.Count(); i++)
-               {
-                  //Calcule stat
-               }
+                //Statistique Conditionnelle
             }
             else //Sans comptage de cartes
             {
-               int nbChance = 0;
+               float nbChance = 0;
                for (int i = IndexCarte; i < paquet.Count(); i++)
                {
                   if (paquet[i].GetValeur() <= (21 - GetTotal()))
                   {
-                     nbChance++;
+                     nbChance += 1;
                   }
                   else if (paquet[i].GetValeur() == 11 && 1 <= (21 - GetTotal()))
                   {
-                     nbChance++;
+                      nbChance += 1;
                   }
                }
-               stats_ = ((float)nbChance / (paquet.Count() - IndexCarte)) * 100;
+               stats_ = (nbChance / (paquet.Count() - IndexCarte)) * 100;
             }
          }
       }
