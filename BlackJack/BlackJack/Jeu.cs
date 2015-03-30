@@ -1,4 +1,9 @@
-﻿using System;
+﻿/////////////////////
+// Form Jeu        //
+// Xavier Brosseau //
+// Charlie Laplante//
+/////////////////////
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

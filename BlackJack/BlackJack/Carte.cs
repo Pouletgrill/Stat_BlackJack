@@ -1,4 +1,9 @@
-﻿using System;
+﻿/////////////////////
+// Class Carte     //
+// Xavier Brosseau //
+// Charlie Laplante//
+/////////////////////
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

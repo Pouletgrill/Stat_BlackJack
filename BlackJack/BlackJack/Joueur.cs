@@ -1,4 +1,9 @@
-﻿using System;
+﻿/////////////////////
+// Class Joueur    //
+// Xavier Brosseau //
+// Charlie Laplante//
+/////////////////////
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
